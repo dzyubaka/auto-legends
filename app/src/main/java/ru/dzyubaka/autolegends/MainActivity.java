@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private User user;
     private TextView moneyTextView;
+    private final ShopFragment shopFragment = new ShopFragment();
     private SetupFragment setupFragment;
 
     @Override
@@ -30,7 +32,20 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_frame, setupFragment)
                 .commit();
-        ((BottomNavigationView) findViewById(R.id.bottom)).setSelectedItemId(R.id.setup);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom);
+        bottomNavigationView.setSelectedItemId(R.id.setup);
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            Fragment fragment = null;
+            if (item.getItemId() == R.id.shop) {
+                fragment = shopFragment;
+            } else if (item.getItemId() == R.id.setup) {
+                fragment = setupFragment;
+            }
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_frame, fragment)
+                    .commit();
+            return true;
+        });
         moneyTextView = findViewById(R.id.money);
         moneyTextView.setText(user.getMoney() + " money");
         ((TextView) findViewById(R.id.diamonds)).setText(user.getDiamonds() + " diamonds");
