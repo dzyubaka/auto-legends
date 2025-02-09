@@ -1,6 +1,6 @@
 package ru.dzyubaka.autolegends;
 
-enum UnitClass {
+public enum UnitClass {
     TANK,
     WARRIOR,
     MAGE,

@@ -18,17 +18,17 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private User user;
+    User user;
     private TextView moneyTextView;
+    private TextView diamondsTextView;
     private final ShopFragment shopFragment = new ShopFragment();
-    private SetupFragment setupFragment;
+    private final SetupFragment setupFragment = new SetupFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         user = (User) getIntent().getSerializableExtra("user");
-        setupFragment = new SetupFragment(user);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_frame, setupFragment)
                 .commit();
@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
         moneyTextView = findViewById(R.id.money);
-        moneyTextView.setText(user.getMoney() + " money");
-        ((TextView) findViewById(R.id.diamonds)).setText(user.getDiamonds() + " diamonds");
+        diamondsTextView = findViewById(R.id.diamonds);
+        update();
     }
 
     @Override
@@ -80,5 +80,10 @@ public class MainActivity extends AppCompatActivity {
                     .setPositiveButton(android.R.string.ok, null)
                     .show();
         }
+    }
+
+    void update() {
+        moneyTextView.setText(user.getMoney() + " money");
+        diamondsTextView.setText(user.getDiamonds() + " diamonds");
     }
 }

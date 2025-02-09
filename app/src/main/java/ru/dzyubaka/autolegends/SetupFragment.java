@@ -32,18 +32,13 @@ public class SetupFragment extends Fragment {
             UnitType.SKELETON,
             UnitType.SKELETON
     ));
-    private final User user;
-
-    public SetupFragment(User user) {
-        this.user = user;
-    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_setup, container, false);
         LinearLayout setupLayout = root.findViewById(R.id.setup);
         startButton = root.findViewById(R.id.button);
-        startButton.setText("Start\n" + user.getLevel() + " lvl");
+        startButton.setText("Start\n" + ((MainActivity) requireActivity()).user.getLevel() + " lvl");
         for (int i = 0; i < 5; i++) {
             int closure = i;
             ImageView unitImageView = (ImageView) setupLayout.getChildAt(i);
@@ -55,7 +50,7 @@ public class SetupFragment extends Fragment {
                 ArrayList<UnitType> available = new ArrayList<>();
                 available.add(UnitType.SKELETON);
 
-                for (UnitType unitType : user.getInventory()) {
+                for (UnitType unitType : ((MainActivity) requireActivity()).user.getInventory()) {
                     if (!setup.contains(unitType)) {
                         available.add(unitType);
                     }

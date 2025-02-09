@@ -33,8 +33,12 @@ interface AutoLegendsService {
     @FormUrlEncoded
     Call<User> levelUp(@Field("login") String login);
 
+    @POST("/openCase")
+    @FormUrlEncoded
+    Call<User> openCase(@Field("login") String login);
+
     AutoLegendsService instance = new Retrofit.Builder()
-            .baseUrl("http://dzyuba.duckdns.org")
+            .baseUrl("http://10.0.2.2:8080")
             .addConverterFactory(GsonConverterFactory.create(new GsonBuilder()
                     .registerTypeAdapter(new TypeToken<List<UnitType>>() {
                     }.getType(), new UnitTypeDeserializer())

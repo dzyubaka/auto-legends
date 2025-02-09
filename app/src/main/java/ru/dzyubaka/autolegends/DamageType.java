@@ -1,6 +1,6 @@
 package ru.dzyubaka.autolegends;
 
-enum DamageType {
+public enum DamageType {
     PHYSICAL,
     MAGICAL,
     PURE

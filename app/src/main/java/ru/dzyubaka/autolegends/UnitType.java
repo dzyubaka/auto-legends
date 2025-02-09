@@ -1,6 +1,6 @@
 package ru.dzyubaka.autolegends;
 
-enum UnitType {
+public enum UnitType {
     PALADIN,
     FIRE_MAGE,
     SKELETON,

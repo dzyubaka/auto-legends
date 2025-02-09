@@ -16,7 +16,8 @@ class Unit implements Cloneable {
                     20,
                     200,
                     0,
-                    0
+                    0,
+                    Rarity.RARE
             )),
             Map.entry(UnitType.FIRE_MAGE, new Unit(
                     UnitType.FIRE_MAGE,
@@ -29,7 +30,8 @@ class Unit implements Cloneable {
                     5,
                     50,
                     0,
-                    30
+                    30,
+                    Rarity.RARE
             )),
             Map.entry(UnitType.SKELETON, new Unit(
                     UnitType.SKELETON,
@@ -42,7 +44,8 @@ class Unit implements Cloneable {
                     10,
                     100,
                     0,
-                    0
+                    0,
+                    Rarity.RARE
             )),
             Map.entry(UnitType.PRIEST, new Unit(
                     UnitType.PRIEST,
@@ -55,7 +58,8 @@ class Unit implements Cloneable {
                     5,
                     40,
                     0,
-                    20
+                    20,
+                    Rarity.EPIC
             )),
             Map.entry(UnitType.FAIRY, new Unit(
                     UnitType.FAIRY,
@@ -68,7 +72,8 @@ class Unit implements Cloneable {
                     0,
                     10,
                     10,
-                    10
+                    10,
+                    Rarity.EPIC
             )),
             Map.entry(UnitType.DRUID, new Unit(
                     UnitType.DRUID,
@@ -81,7 +86,8 @@ class Unit implements Cloneable {
                     10,
                     60,
                     0,
-                    30
+                    30,
+                    Rarity.LEGENDARY
             )),
             Map.entry(UnitType.BEAR, new Unit(
                     UnitType.BEAR,
@@ -94,7 +100,8 @@ class Unit implements Cloneable {
                     20,
                     150,
                     0,
-                    0
+                    0,
+                    Rarity.LEGENDARY
             )),
             Map.entry(UnitType.MUSKETEER, new Unit(
                     UnitType.MUSKETEER,
@@ -107,7 +114,8 @@ class Unit implements Cloneable {
                     0,
                     30,
                     0,
-                    0
+                    0,
+                    Rarity.RARE
             )),
             Map.entry(UnitType.GOLEM, new Unit(
                     UnitType.GOLEM,
@@ -120,7 +128,8 @@ class Unit implements Cloneable {
                     20,
                     300,
                     0,
-                    0
+                    0,
+                    Rarity.RARE
             )),
             Map.entry(UnitType.ASSASSIN, new Unit(
                     UnitType.ASSASSIN,
@@ -133,7 +142,8 @@ class Unit implements Cloneable {
                     10,
                     60,
                     10,
-                    30
+                    30,
+                    Rarity.EPIC
             )),
             Map.entry(UnitType.STAR_MAGE, new Unit(
                     UnitType.STAR_MAGE,
@@ -146,7 +156,8 @@ class Unit implements Cloneable {
                     5,
                     50,
                     0,
-                    30
+                    30,
+                    Rarity.EPIC
             )),
             Map.entry(UnitType.ORC, new Unit(
                     UnitType.ORC,
@@ -159,7 +170,8 @@ class Unit implements Cloneable {
                     5,
                     150,
                     0,
-                    20
+                    20,
+                    Rarity.RARE
             )),
             Map.entry(UnitType.VAMPIRE, new Unit(
                     UnitType.VAMPIRE,
@@ -172,7 +184,8 @@ class Unit implements Cloneable {
                     0,
                     50,
                     0,
-                    40
+                    40,
+                    Rarity.LEGENDARY
             ))
     );
 
@@ -189,6 +202,7 @@ class Unit implements Cloneable {
     private int mana;
     private int maxMana;
     private int stun;
+    private Rarity rarity;
 
     Unit(
             UnitType unitType,
@@ -201,7 +215,9 @@ class Unit implements Cloneable {
             int magicalArmor,
             int aggro,
             int mana,
-            int maxMana) {
+            int maxMana,
+            Rarity rarity
+    ) {
         this.unitType = unitType;
         this.unitClass = unitClass;
         this.name = name;
@@ -214,6 +230,7 @@ class Unit implements Cloneable {
         this.aggro = aggro;
         this.mana = mana;
         this.maxMana = maxMana;
+        this.rarity = rarity;
     }
 
     static Unit create(UnitType unitType) {
